@@ -1,2 +1,1 @@
-# NoRing
-
+# Noring - A Tinnitus Treatment
