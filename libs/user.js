@@ -1,7 +1,3 @@
-const mixpanel = require("mixpanel-browser");
-const googleAnalyticsId = "UA-135729063-1";
-const mixpanelId = "ac49b610c356db3eb7ab31b8f7b60fa8";
-
 const getDateStr = timestamp => {
   return new Date(timestamp).toISOString().split("T")[0];
 };
@@ -150,17 +146,7 @@ export default class User {
   }
 
   static initTrackers() {
-    if (!this.isProduction()) return;
-    if (window.gtag) {
-      window.gtag("config", googleAnalyticsId, {
-        user_id: this.deviceId
-      });
-    }
-
-    mixpanel.init(mixpanelId);
-    mixpanel.identify(this.deviceId);
-    // Add user attributes
-    mixpanel.register({});
+    return;
   }
 
   static getDidTutorial() {
@@ -252,84 +238,34 @@ export default class User {
   }
 
   static trackEventGA(category, action, label, value) {
-    if (!this.isProduction()) return;
-    if (window.gtag) {
-      window.gtag("event", action, {
-        event_category: category,
-        event_label: label,
-        value: value
-      });
-    }
+    return;
   }
 
   static trackEventMixpanel(action) {
-    if (!this.isProduction()) return;
-    if (!mixpanel) return;
-    mixpanel.track(action);
+    return;
   }
 
   static addUserDataMixpanel(data) {
-    if (!this.isProduction()) return;
-    if (!mixpanel || !mixpanel.people || !mixpanel.people.set) return;
-    mixpanel.people.set(data);
+    return;
   }
 
   static trackSessionStart(frequency) {
-    if (!this.isProduction()) return;
-    this.trackEventGA("Treatment", "Session Start");
-
-    this.trackEventMixpanel("Session Start", { frequency: frequency });
-    this.addUserDataMixpanel({ frequency: frequency });
+    return;
   }
 
   static trackSessionStop(frequency, seconds) {
-    if (!this.isProduction()) return;
-    this.trackEventGA(
-      "Treatment",
-      "Session Finish",
-      undefined,
-      Math.floor(seconds)
-    );
-
-    this.trackEventMixpanel("Session Finish", {
-      frequency: frequency,
-      duration: Math.floor(seconds)
-    });
-    //mixpanel.people.increment("sessions");
+    return;
   }
 
   /**
    * Track when a user surpasses the 3-hour treatment mark
    */
   static trackSessionSuccess(frequency, seconds) {
-    if (!this.isProduction()) return;
-    this.trackEventGA(
-      "Treatment",
-      "Session Success",
-      undefined,
-      Math.floor(seconds)
-    );
-
-    this.trackEventMixpanel("Session Success", {
-      frequency: frequency,
-      duration: Math.floor(seconds)
-    });
+    return;
   }
 
   static trackDiagnosticStep(step, seconds) {
-    if (!this.isProduction()) return;
-    if (window.gtag) {
-      // Send diagnostic steps as pageviews on GA.
-      // GA doesn't support event funnels, so this is a cheap hack for that.
-      window.gtag("config", googleAnalyticsId, {
-        page_title: `Diagnostic ${step}`,
-        page_path: `/diagnostic/?step=${encodeURI(step)}`
-      });
-    }
-
-    this.trackEventMixpanel(`Diagnostic ${step}`, {
-      duration: Math.floor(seconds)
-    });
+    return;
   }
 }
 
