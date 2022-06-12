@@ -47,22 +47,6 @@ function Hero({ t, treatmentFrequency }) {
                 </a>
               </Link>
             </div>
-            {/* <div className="language">
-              <a
-                className={`lang ${language === "es" ? "is-active" : ""}`}
-                onClick={() => switchLanguage("es")}
-              >
-                <span className="long-name">Español</span>
-                <span className="short-name">ES</span>
-              </a>
-              <a
-                className={`lang ${language === "en" ? "is-active" : ""}`}
-                onClick={() => switchLanguage("en")}
-              >
-                <span className="long-name">English</span>
-                <span className="short-name">EN</span>
-              </a>
-            </div> */}
             <div className="social">
               <a
                 href="https://github.com/Jbolt01/NoRing"

@@ -6,7 +6,6 @@ const path = require("path");
 
 const localeSubpaths = {
   en: "en"
-  // es: "es"
 };
 
 module.exports = withImages(

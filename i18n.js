@@ -4,7 +4,6 @@ const path = require("path");
 
 const NextI18NextInstance = new NextI18Next({
   defaultLanguage: "en",
-  // otherLanguages: ["es"],
   localeSubpaths,
   localePath: path.resolve("./public/static/locales")
 });
