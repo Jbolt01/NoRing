@@ -17,8 +17,6 @@ The product is coded in React with the [Next.JS](https://nextjs.org/) framework.
 - components/\* > The components of the app, split into site and app.
 - libs/\* > Audio and user libraries.
 
-The project is available in English and Spanish with react-i18n, which doesn't let the site be compiled statically (or at least not without some serious refactoring).
-
 ## Setting up the environment
 
 This should be pretty strightforward:
